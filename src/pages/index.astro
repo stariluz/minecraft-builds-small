@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<h1><span class="text-gradient">Guille</span> builds</h1>
+		<p class="instructions">
+			<strong>Welcome to Guille builds!</strong> Explore and look for your favorite constructions.
+		</p>
+		<ul role="list" class="link-card-grid">
+			<Card
+				href="https://docs.astro.build/"
+				title="Knight Hub"
+				price="15.50"
+			/>
+			<Card
+				href="https://astro.build/integrations/"
+				title="Athens Lobby"
+				price="15.50"
+			/>
+			<Card
+				href="https://astro.build/themes/"
+				title="Tropical Elephant Spawn"
+				price="15.50"
+			/>
+			<Card
+				href="https://astro.build/chat/"
+				title="Nether Fortress"
+				price="15.50"
+			/>
+		</ul>
+	</main>
+</Layout>
+
+<style>
+	main {
+		margin: auto;
+		padding: 1rem;
+		width: 960px;
+		max-width: calc(100% - 2rem);
+		color: var(--stari-text-color-primary);
+		font-size: 20px;
+		line-height: 1.6;
+	}
+	h1 {
+		font-size: 4rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 1rem;
+	}
+	.instructions {
+		margin-bottom: 2rem;
+		/* border: 1px solid rgba(var(--accent-light), 25%); */
+		color: var(--stari-text-color-secondary);
+		background: var(--stari-accent-gradient-2);
+		padding: 1.5rem;
+		border-radius: 8px;
+	}
+	.instructions code {
+		font-size: 0.8em;
+		font-weight: bold;
+		background: rgba(var(--accent-light), 12%);
+		color: rgb(var(--accent-light));
+		border-radius: 4px;
+		padding: 0.3em 0.4em;
+	}
+	.instructions strong {
+		color: rgb(var(--accent-light));
+	}
+	.link-card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr));
+		gap: 2rem;
+		padding: 0;
+	}
+</style>

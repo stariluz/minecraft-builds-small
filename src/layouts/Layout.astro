@@ -1,0 +1,96 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="colors concepts entities">
+		<slot />
+	</body>
+</html>
+<style is:global>
+	/* :root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	} */
+	.colors * {
+		--stari-color-1-rgb: 36, 107, 73;
+		--stari-color-1: rgb(var(--stari-color-1-rgb));
+		--stari-color-2: rgb(255, 255, 255);
+		--stari-color-3: rgb(19, 18, 18);
+		--stari-text-color-1: var(--stari-color-3);
+		--stari-text-color-2: var(--stari-color-2);
+		--stari-text-color-3: var(--stari-color-1);
+		--stari-bg-color-1: var(--stari-color-2);
+		--stari-bg-color-2: var(--stari-color-1);
+		--stari-bg-color-3: var(--stari-color-3);
+		--stari-accent-1: var(--stari-color-1-rgb);
+		--stari-accent-light-1: 57, 218, 140;
+		--stari-accent-dark-1: 13, 56, 35;
+		--stari-accent-gradient-1: linear-gradient(
+			45deg,
+			rgb(var(--stari-accent-1)),
+			rgb(var(--stari-accent-light-1)) 30%,
+			white 60%
+		);
+		--stari-accent-gradient-2: linear-gradient(
+			30deg,
+			rgba(var(--stari-accent-1), 66%),
+			rgba(var(--stari-accent-light-1), 33%)
+		);
+	}
+	.concepts * {
+		--stari-bg-color-primary: var(--stari-bg-color-1);
+		--stari-bg-color-secondary: var(--stari-bg-color-2);
+		--stari-bg-color-important: var(--stari-bg-color-3);
+		--stari-text-color-primary: var(--stari-text-color-1);
+		--stari-text-color-secondary: var(--stari-text-color-2);
+		--stari-text-color-important: var(--stari-text-color-3);
+	}
+	.entities * {
+		--stari-btn-color-primary: var(--stari-bg-color-important);
+		--stari-btn-color-secondary: var(--stari-bg-color-secondary);
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		/* background: #13151a; */
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+
+	.text-gradient {
+		background-image: var(--stari-accent-gradient-1);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
+	}
+</style>

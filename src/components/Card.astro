@@ -1,0 +1,81 @@
+---
+interface Props {
+	title: string;
+	price: string;
+	href: string;
+}
+
+const { href, title, price } = Astro.props;
+---
+
+<li class="card link-card">
+	<a href={href}>
+		<img class="card-image" src="/img/Photo_01.png" alt="Product image" />
+		<div class="card-content">
+			<h2>
+				{title}
+			</h2>
+			<span class="text-gradient price">
+				${price}
+			</span>
+		</div>
+	</a>
+</li>
+<style>
+	.link-card {
+		list-style: none;
+		display: flex;
+		padding: 1px;
+		background-color: var(--stari-bg-color-primary);
+		background-image: none;
+		background-size: 400%;
+		border-radius: 7px;
+		background-position: 100%;
+		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+	}
+	.link-card > a {
+		width: 100%;
+		text-decoration: none;
+		line-height: 1.4;
+		border-radius: 8px;
+		color: var(--stari-text-color-primary);
+		/* background-color: #23262d; */
+		opacity: 0.8;
+		position: relative;
+	}
+	.card-content {
+		padding: 0.5rem calc(1.5rem - 1px);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: relative;
+	}
+	.card-image {
+		box-sizing: border-box;
+		width: 100%;
+		max-width: 100%;
+		height: auto;
+		object-fit: cover;
+		object-position: center;
+		aspect-ratio: 2/1;
+		border-radius: 0.5rem;
+	}
+	h2 {
+		margin: 0;
+		font-size: 1.25rem;
+		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+	.price{
+		font-size: 0.9rem;
+		font-weight: 900;
+		/* color: var(--stari-text-color-important); */
+	}
+	.link-card:is(:hover, :focus-within) {
+		background-position: 0;
+		background-image: var(--accent-gradient);
+	}
+	.link-card:is(:hover, :focus-within) h2 {
+		color: rgb(var(--accent-light));
+	}
+</style>
