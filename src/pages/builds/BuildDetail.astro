@@ -1,0 +1,13 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+interface Props {
+	building: Building;
+}
+
+const { building } = Astro.props;
+
+---
+<Layout title={building.title}>
+    
+</Layout>

@@ -1,36 +1,33 @@
 ---
 interface Props {
-	title: string;
-	price: number;
-	disccount: number;
-	href: string;
+	building: Building,
 }
 
-const { href, title, price, disccount } = Astro.props;
-const priceWithDiscount = price * (1 - disccount / 100);
+const { building } = Astro.props;
+const priceWithDiscount = (building.price * (1 - building.discount / 100)).toFixed(2);
 ---
 
 <li class="card link-card">
 	<div class="card-inner">
 		<div class="card-background">
-			<img class="card-image" src="/img/Photo_01.png" alt="Product image" />
+			<img class="card-image" src={building.images[0]} alt="Product image" />
 		</div>
 		<div class="card-overlay">
 			<div class="card-header">
 				<span class="price price--discounted">
-					${price}
+					${building.price}
 				</span>
 				<span class="price">
 					${priceWithDiscount}
 				</span>
 			</div>
-			<a  href={href} class="card-interaction">
+			<a  href={`builds/${building.id}`} class="card-interaction">
 	
 			</a>
 			<div class="card-content">
-				<span class="discount">{disccount}% OFF</span>
+				<span class="discount">{building.discount}% OFF</span>
 				<h2 class="card-title">
-					{title}
+					{building.title}
 				</h2>
 				<div class="card-tags">
 					<span class="tag">Assets</span>

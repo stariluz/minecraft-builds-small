@@ -1,0 +1,225 @@
+[
+    {
+        "id": 1,
+        "title": "🏠 Modern House",
+        "price": 10.99,
+        "discount": 20,
+        "rating": 4.8,
+        "content": {
+            "description": "A sleek modern house with large windows and open spaces. 🌿🏡",
+            "dimensions": {
+                "length": 30,
+                "width": 20,
+                "height": 15
+            },
+            "interiors": "Yes",
+            "versions": "1.12 - 1.20",
+            "characteristics": [
+                "Pool",
+                "Garage",
+                "Roof garden"
+            ]
+        },
+        "downloadData": {
+            "javaSchematic": ["1.12", "1.13", "1.14"],
+            "javaWorld": ["1.15", "1.16", "1.17"],
+            "minecraftBedrock": [".mcworld file"]
+        },
+        "threeDModel": "link_to_3d_model_1",
+        "images": [
+            "/img/Photo_01.png",
+            "/img/Photo_01.png",
+            "/img/Photo_01.png"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "🏰 Medieval Castle",
+        "price": 15.99,
+        "discount": 10,
+        "rating": 4.7,
+        "content": {
+            "description": "A grand medieval castle with towers and a moat. 🏯⚔️",
+            "dimensions": {
+                "length": 50,
+                "width": 45,
+                "height": 40
+            },
+            "interiors": "No",
+            "versions": "1.12 - 1.20",
+            "characteristics": [
+                "Dungeon",
+                "Great Hall",
+                "Watchtowers"
+            ]
+        },
+        "downloadData": {
+            "javaSchematic": ["1.12", "1.13", "1.14"],
+            "javaWorld": ["1.15", "1.16", "1.17"],
+            "minecraftBedrock": [".mcworld file"]
+        },
+        "threeDModel": "link_to_3d_model_2",
+        "images": [
+            "/img/Photo_01.png",
+            "/img/Photo_01.png",
+            "/img/Photo_01.png"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "🌆 Futuristic City",
+        "price": 25.99,
+        "discount": 5,
+        "rating": 4.9,
+        "content": {
+            "description": "A sprawling futuristic city with skyscrapers and advanced technology. 🏙️🚀",
+            "dimensions": {
+                "length": 100,
+                "width": 100,
+                "height": 70
+            },
+            "interiors": "No apply",
+            "versions": "1.14 - 1.20",
+            "characteristics": [
+                "Skyscrapers",
+                "Advanced Tech",
+                "Transport System"
+            ]
+        },
+        "downloadData": {
+            "javaSchematic": ["1.14", "1.15", "1.16"],
+            "javaWorld": ["1.17", "1.18", "1.19"],
+            "minecraftBedrock": [".mcworld file"]
+        },
+        "threeDModel": "link_to_3d_model_3",
+        "images": [
+            "/img/Photo_01.png",
+            "/img/Photo_01.png",
+            "/img/Photo_01.png"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "🏜️ Desert Village",
+        "price": 8.99,
+        "discount": 15,
+        "rating": 4.5,
+        "content": {
+            "description": "A small desert village with traditional architecture. 🏚️🌵",
+            "dimensions": {
+                "length": 40,
+                "width": 35,
+                "height": 10
+            },
+            "interiors": "Yes",
+            "versions": "1.10 - 1.16",
+            "characteristics": [
+                "Market",
+                "Houses",
+                "Oasis"
+            ]
+        },
+        "downloadData": {
+            "javaSchematic": ["1.10", "1.11", "1.12"],
+            "javaWorld": ["1.13", "1.14", "1.15"],
+            "minecraftBedrock": [".mcworld file"]
+        },
+        "threeDModel": "link_to_3d_model_4",
+        "images": [
+            "/img/Photo_01.png",
+            "/img/Photo_01.png",
+            "/img/Photo_01.png"
+        ]
+    },
+    {
+        "id": 5,
+        "title": "🏘️ Suburban Neighborhood",
+        "price": 12.99,
+        "discount": 25,
+        "rating": 4.6,
+        "content": {
+            "description": "A cozy suburban neighborhood with multiple houses and parks. 🏡🌳",
+            "dimensions": {
+                "length": 60,
+                "width": 50,
+                "height": 20
+            },
+            "interiors": "Yes",
+            "versions": "1.11 - 1.18",
+            "characteristics": [
+                "Parks",
+                "Playgrounds",
+                "Community Center"
+            ]
+        },
+        "downloadData": {
+            "javaSchematic": ["1.11", "1.12", "1.13"],
+            "javaWorld": ["1.14", "1.15", "1.16"],
+            "minecraftBedrock": [".mcworld file"]
+        },
+        "threeDModel": "link_to_3d_model_5",
+        "images": [
+            "/img/Photo_01.png",
+            "/img/Photo_01.png",
+            "/img/Photo_01.png"
+        ]
+    },
+    {
+        "id": 6,
+        "title": "🛰️ Space Station",
+        "price": 19.99,
+        "discount": 30,
+        "rating": 4.9,
+        "content": {
+            "description": "A futuristic space station orbiting a distant planet. 🌌🚀",
+            "dimensions": {
+                "length": 80,
+                "width": 60,
+                "height": 50
+            },
+            "interiors": "No",
+            "versions": "1.15 - 1.20",
+            "characteristics": [
+                "Observation Deck",
+                "Labs",
+                "Living Quarters"
+            ]
+        },
+        "downloadData": {
+            "javaSchematic": ["1.15", "1.16", "1.17"],
+            "javaWorld": ["1.18", "1.19", "1.20"],
+            "minecraftBedrock": [".mcworld file"]
+        },
+        "threeDModel": "link_to_3d_model_6",
+        "images": [
+            "/img/Photo_01.png",
+            "/img/Photo_01.png",
+            "/img/Photo_01.png"
+        ]
+    },
+    {
+        "id": 0,
+        "title": "",
+        "price": 0.0,
+        "discount": 0,
+        "rating": 0.0,
+        "content": {
+            "description": "",
+            "dimensions": {
+                "length": 0,
+                "width": 0,
+                "height": 0
+            },
+            "interiors": "",
+            "versions": "",
+            "characteristics": []
+        },
+        "downloadData": {
+            "javaSchematic": [],
+            "javaWorld": [],
+            "minecraftBedrock": [".mcworld file"]
+        },
+        "threeDModel": "",
+        "images": []
+    }    
+]
