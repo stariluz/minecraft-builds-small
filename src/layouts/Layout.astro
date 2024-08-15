@@ -36,13 +36,17 @@ const { title } = Astro.props;
 		--stari-color-1-rgb: 36, 107, 73;
 		--stari-color-1: rgb(var(--stari-color-1-rgb));
 		--stari-color-2: rgb(255, 255, 255);
-		--stari-color-3: rgb(19, 18, 18);
+		--stari-color-3: rgb(31, 29, 29);
+		--stari-color-4: rgb(195, 195, 195);
+		--stari-color-5: rgb(255, 49, 49);
 		--stari-text-color-1: var(--stari-color-3);
 		--stari-text-color-2: var(--stari-color-2);
 		--stari-text-color-3: var(--stari-color-1);
+		--stari-text-color-4: var(--stari-color-4);
 		--stari-bg-color-1: var(--stari-color-2);
 		--stari-bg-color-2: var(--stari-color-1);
 		--stari-bg-color-3: var(--stari-color-3);
+		--stari-bg-color-4: var(--stari-color-5);
 		--stari-accent-1: var(--stari-color-1-rgb);
 		--stari-accent-light-1: 57, 218, 140;
 		--stari-accent-dark-1: 13, 56, 35;
@@ -59,12 +63,15 @@ const { title } = Astro.props;
 		);
 	}
 	.concepts * {
+		--stari-bg-color-dark: var(--stari-color-3);
 		--stari-bg-color-primary: var(--stari-bg-color-1);
 		--stari-bg-color-secondary: var(--stari-bg-color-2);
 		--stari-bg-color-important: var(--stari-bg-color-3);
+		--stari-bg-color-highlight: var(--stari-bg-color-4);
 		--stari-text-color-primary: var(--stari-text-color-1);
 		--stari-text-color-secondary: var(--stari-text-color-2);
 		--stari-text-color-important: var(--stari-text-color-3);
+		--stari-text-color-minor: var(--stari-text-color-4);
 	}
 	.entities * {
 		--stari-btn-color-primary: var(--stari-bg-color-important);

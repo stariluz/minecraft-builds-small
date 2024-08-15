@@ -1,32 +1,58 @@
 ---
 interface Props {
 	title: string;
-	price: string;
+	price: number;
+	disccount: number;
 	href: string;
 }
 
-const { href, title, price } = Astro.props;
+const { href, title, price, disccount } = Astro.props;
+const priceWithDiscount = price * (1 - disccount / 100);
 ---
 
 <li class="card link-card">
-	<a href={href}>
-		<img class="card-image" src="/img/Photo_01.png" alt="Product image" />
-		<div class="card-content">
-			<h2>
-				{title}
-			</h2>
-			<span class="text-gradient price">
-				${price}
-			</span>
+	<div class="card-inner">
+		<div class="card-background">
+			<img class="card-image" src="/img/Photo_01.png" alt="Product image" />
 		</div>
-	</a>
+		<div class="card-overlay">
+			<div class="card-header">
+				<span class="price price--discounted">
+					${price}
+				</span>
+				<span class="price">
+					${priceWithDiscount}
+				</span>
+			</div>
+			<a  href={href} class="card-interaction">
+	
+			</a>
+			<div class="card-content">
+				<span class="discount">{disccount}% OFF</span>
+				<h2 class="card-title">
+					{title}
+				</h2>
+				<div class="card-tags">
+					<span class="tag">Assets</span>
+					<span class="tag">Lobby</span>
+					<span class="tag">Road</span>
+				</div>
+				<a class="card-action btn-paypal" href="">
+					Pay with PayPal
+				</a>
+			</div>
+		</div>
+	</div>
 </li>
 <style>
-	.link-card {
+	.card {
+		--stari-card-padding: 0.75rem;
+		position: relative;
+		aspect-ratio: 9/12;
 		list-style: none;
 		display: flex;
 		padding: 1px;
-		background-color: var(--stari-bg-color-primary);
+		background-color: var(--stari-bg-color-dark);
 		background-image: none;
 		background-size: 400%;
 		border-radius: 7px;
@@ -34,48 +60,104 @@ const { href, title, price } = Astro.props;
 		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 	}
-	.link-card > a {
+	.card-inner{
 		width: 100%;
-		text-decoration: none;
+	}
+	.card-overlay {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 		line-height: 1.4;
 		border-radius: 8px;
-		color: var(--stari-text-color-primary);
-		/* background-color: #23262d; */
-		opacity: 0.8;
+		color: var(--stari-text-color-secondary);
 		position: relative;
 	}
-	.card-content {
-		padding: 0.5rem calc(1.5rem - 1px);
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		position: relative;
+	.card-background{
+		max-width: 100%;
+		max-height: 100%;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		opacity: 0.6;
 	}
 	.card-image {
 		box-sizing: border-box;
 		width: 100%;
-		max-width: 100%;
-		height: auto;
+		height: 100%;
 		object-fit: cover;
 		object-position: center;
-		aspect-ratio: 2/1;
 		border-radius: 0.5rem;
 	}
-	h2 {
+	.card-header {
+		padding: var(--stari-card-padding);
+	}
+	.card-content {
+		padding:  var(--stari-card-padding) calc(var(--stari-card-padding)  - 1px);
+		/* display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: relative; */
+	}
+	.card-interaction{
+		flex: 1;
+	}
+	.card-title {
 		margin: 0;
 		font-size: 1.25rem;
 		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 	}
-	.price{
+	.price {
 		font-size: 0.9rem;
 		font-weight: 900;
 		/* color: var(--stari-text-color-important); */
 	}
+	.price--discounted{
+		text-decoration: line-through;
+		color: var(--stari-text-color-minor);
+	}
+
+	.discount{
+		background-color: var(--stari-bg-color-highlight);
+		padding: 0.25rem;
+		border-radius: 2px;
+		font-size: 0.75rem;
+		font-weight: 700;
+		margin-bottom: 0.5rem;
+		display: inline-block;
+	}
+	.card-tags{
+		display: flex;
+		justify-content: flex-start;
+		gap: 0.25rem;
+		margin-bottom: 0.5rem;
+	}
+	.tag{
+		background-color: var(--stari-bg-color-dark);
+		color: var(--stari-text-color-minor);
+		padding: 0.2rem 0.6rem 	;
+		border-radius: 2px;
+		font-size: 0.75rem;
+		font-weight: 600;
+		opacity: 0.7;
+	}
+	.card-action{
+		border-radius: 4px;
+		display: block;
+		padding: 0.6rem 1rem;
+		font-weight: 600;
+	}
+	a.card-action{
+		text-decoration: none;
+	}
+	.btn-paypal{
+		color: rgb(0, 0, 0);
+		background-color: rgb(250, 170, 11);
+	}
+
 	.link-card:is(:hover, :focus-within) {
 		background-position: 0;
 		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
 	}
 </style>

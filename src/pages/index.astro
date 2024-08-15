@@ -13,22 +13,26 @@ import Card from '../components/Card.astro';
 			<Card
 				href="https://docs.astro.build/"
 				title="Knight Hub"
-				price="15.50"
+				price={15.50}
+				disccount={50}
 			/>
 			<Card
 				href="https://astro.build/integrations/"
 				title="Athens Lobby"
-				price="15.50"
+				price={15.50}
+				disccount={49}
 			/>
 			<Card
 				href="https://astro.build/themes/"
 				title="Tropical Elephant Spawn"
-				price="15.50"
+				price={15.50}
+				disccount={48}
 			/>
 			<Card
 				href="https://astro.build/chat/"
 				title="Nether Fortress"
-				price="15.50"
+				price={15.50}
+				disccount={47}
 			/>
 		</ul>
 	</main>
@@ -41,7 +45,7 @@ import Card from '../components/Card.astro';
 		width: 960px;
 		max-width: calc(100% - 2rem);
 		color: var(--stari-text-color-primary);
-		font-size: 20px;
+		font-size: 16px;
 		line-height: 1.6;
 	}
 	h1 {
