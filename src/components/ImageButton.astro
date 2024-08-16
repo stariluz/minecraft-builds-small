@@ -1,0 +1,61 @@
+---
+interface Props {
+    index: number;
+    imageUrl: string;
+}
+
+const { index = 0, imageUrl = "/img/Photo_01/.png" } = Astro.props;
+---
+
+<image-button>
+    <button
+        id={`button-${index}`}
+        data-index={index}
+        data-imageUrl={imageUrl}
+        type="button"
+    >
+        <img id={`image-${index}`} src={imageUrl} alt="banner" />
+    </button>
+</image-button>
+<style>
+    image-button{
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+    image-button button{
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+		position: relative;
+        padding: 0;
+        margin: 0;
+    }
+    image-button img{
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        object-position: center;
+        object-fit: cover;
+		position: relative;
+    }
+</style>
+<script>
+    class ImageButton extends HTMLElement {
+        constructor() {
+            super();
+
+            // const index = this.dataset.index;
+            // const buttonImage = this.querySelector("button")!;
+
+            // buttonImage.addEventListener("click", () => {
+            //     onclick(index);
+            // });
+        }
+    }
+
+    customElements.define("image-button", ImageButton);
+</script>

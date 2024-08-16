@@ -1,0 +1,100 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import builds from "../../data/builds.json";
+import ImageButton from "../../components/ImageButton.astro";
+
+export function getStaticPaths() {
+	return builds.map((building) => ({
+		params: { id: building.id },
+	}));
+}
+
+interface Params {
+	id: number;
+}
+interface Props {
+	building: Building;
+}
+
+const { id } = Astro.params;
+const building = builds.find((building) => {
+	return building.id == id;
+}) as Building;
+---
+
+<Layout title={building.title}>
+	<main class="container">
+		<section class="gallery">
+			<div class="banner">
+				<img class="banner-image" id="banner" src={building.images[0]} alt="Banner" />
+			</div>
+			<footer>
+				<ul class="gallery-images">
+				{
+					building.images.map((imageUrl, index) => (
+						<li class="gallery-image">
+							<ImageButton imageUrl={imageUrl} index={index} />
+						</li>
+					))
+				}
+				</ul>
+			</footer>
+		</section>
+		<section></section>
+		<section></section>
+		<section></section>
+	</main>
+</Layout>
+<style>
+	.container{
+		margin: auto;
+		width: calc(100% - 2rem);
+		max-width: 1000px;
+	}
+	.banner{
+		width: 100%;
+		aspect-ratio: 16/9;
+		overflow: hidden;
+	}
+	.banner-image{
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	ul.gallery-images{
+		padding: 0;
+		margin: 0;
+	}
+	.gallery-images{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		overflow-x: scroll;
+		flex-wrap: nowrap;
+	}
+	li.gallery-image{
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.gallery-image{
+		width: 15%;
+		aspect-ratio: 1;
+		position: relative;
+	}
+</style>
+<script>
+	const banner = document.getElementById("banner") as HTMLImageElement;
+	
+	document.querySelectorAll("image-button button").forEach((button) => {
+		button.addEventListener("click", (event) => {
+			const target = event.currentTarget as HTMLButtonElement;
+			const index = target.dataset.index;
+			const imageUrl = target.dataset.imageurl;
+
+			if (imageUrl) {
+				banner.src = imageUrl;
+			}
+		});
+	});
+</script>
