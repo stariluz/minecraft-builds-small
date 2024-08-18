@@ -1,0 +1,17 @@
+---
+import Star from './Star.astro';
+
+interface Props {
+    value: number;
+    roundness?: number;
+}
+
+const { value = 0, roundness = 3 } = Astro.props;
+const totalStars = 5; // Total number of stars
+---
+<div style="display: flex; gap: 4px;">
+    {Array.from({ length: totalStars }).map((_, index) => {
+        const fillPercentage = Math.min(Math.max(value - index, 0), 1) * 100;
+        return <Star fillPercentage={fillPercentage} roundness={roundness} key={index} />;
+    })}
+  </div>

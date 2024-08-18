@@ -1,0 +1,30 @@
+---
+interface Props {
+    href: string;
+    class:string;
+}
+
+const { class:className, href } = Astro.props;
+---
+
+<a class:list={["btn-paypal", className]} href={href}> PayPal checkout </a>
+
+<style>
+	.btn-paypal{
+		color: rgb(0, 0, 0);
+		background-color: rgb(250, 170, 11);
+        
+		border-radius: 4px;
+		padding: 0.6rem 1rem;
+		font-weight: 600;
+	}
+	a.btn-paypal{
+		text-decoration: none;
+	}
+    .d-block{
+        display: block;
+    }
+    .centered{
+        text-align: center;
+    }
+</style>

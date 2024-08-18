@@ -1,7 +1,9 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import builds from "../../data/builds.json";
-import ImageButton from "../../components/ImageButton.astro";
+import ImageButton from "../../components/buttons/ImageButton.astro";
+import Rating from "../../components/Rating.astro";
+import PaypalButton from "../../components/buttons/PaypalButton.astro";
 
 export function getStaticPaths() {
 	return builds.map((building) => ({
@@ -26,75 +28,147 @@ const building = builds.find((building) => {
 	<main class="container">
 		<section class="gallery">
 			<div class="banner">
-				<img class="banner-image" id="banner" src={building.images[0]} alt="Banner" />
+				<img
+					class="banner-image"
+					id="banner"
+					src={building.images[0]}
+					alt="Banner"
+				/>
 			</div>
 			<footer>
 				<ul class="gallery-images">
-				{
-					building.images.map((imageUrl, index) => (
-						<li class="gallery-image">
-							<ImageButton imageUrl={imageUrl} index={index} />
-						</li>
-					))
-				}
+					{
+						building.images.map((imageUrl, index) => (
+							<li class="gallery-image">
+								<ImageButton
+									imageUrl={imageUrl}
+									index={index}
+								/>
+							</li>
+						))
+					}
 				</ul>
 			</footer>
 		</section>
-		<section></section>
-		<section></section>
+		<section class="content">
+			<header class="content-header">
+				<h1>{building.title}</h1>
+				<Rating value={building.rating} />
+			</header>
+			<div>
+				<p>{building.content.description}</p>
+				<p>
+					Size: <strong
+						>{building.content.dimensions.length}x{
+							building.content.dimensions.width
+						}x{building.content.dimensions.height}</strong
+					>
+				</p>
+				<p>Interiors: <strong>{building.content.interiors}</strong></p>
+				<p>Versions: <strong>{building.content.versions}</strong></p>
+				<ul>
+					{
+						building.content.characteristics.map(
+							(characteristic) => <li>{characteristic}</li>,
+						)
+					}
+				</ul>
+			</div>
+		</section>
+		<section class="pay">
+			<PaypalButton class="d-block centered"/>
+			<div>
+				<h4>Things you get</h4>
+				<ul>
+					<li>Support once verified</li>
+					<li>Free access to updates </li>
+					<li>Exclusive channels on Discord</li>
+					<li>Giveaways on Discord</li>
+					<li>Java & Bedrock support</li>
+					<li>A great build made by us</li>
+				</ul>
+			</div>
+		</section>
 		<section></section>
 	</main>
 </Layout>
 <style>
-	.container{
+	.container {
 		margin: auto;
 		width: calc(100% - 2rem);
-		max-width: 1000px;
+		max-width: 960px;
+		display: grid;
+		grid-template-areas:
+			"ga ga ga"
+			"co co pa"
+			"ex ex .";
 	}
-	.banner{
+	.gallery {
+		grid-area: ga;
+	}
+	.content {
+		grid-area: co;
+	}
+	.pay {
+		grid-area: pa;
+	}
+	.banner {
 		width: 100%;
 		aspect-ratio: 16/9;
 		overflow: hidden;
 	}
-	.banner-image{
+	.banner-image {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 	}
-	ul.gallery-images{
+	ul.gallery-images {
 		padding: 0;
-		margin: 0;
 	}
-	.gallery-images{
+	.gallery-images {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		overflow-x: scroll;
+		/* overflow-x: auto; */
 		flex-wrap: nowrap;
+		gap: 1rem;
+		margin: 1rem;
 	}
-	li.gallery-image{
+	li.gallery-image {
 		list-style: none;
 		padding: 0;
 		margin: 0;
 	}
-	.gallery-image{
-		width: 15%;
+	.gallery-image {
+		width: 8%;
 		aspect-ratio: 1;
 		position: relative;
+	}
+	.content-header {
+		margin-bottom: 2rem;
 	}
 </style>
 <script>
 	const banner = document.getElementById("banner") as HTMLImageElement;
-	
-	document.querySelectorAll("image-button button").forEach((button) => {
+	let lastSelectedIndex: number = 0;
+	const $imageButtons = document.querySelectorAll("image-button button");
+	$imageButtons[0].classList.add("selected");
+
+	$imageButtons.forEach((button) => {
 		button.addEventListener("click", (event) => {
 			const target = event.currentTarget as HTMLButtonElement;
-			const index = target.dataset.index;
+			const index = Number(target.dataset.index);
+			if (index == lastSelectedIndex) {
+				return;
+			}
 			const imageUrl = target.dataset.imageurl;
 
 			if (imageUrl) {
 				banner.src = imageUrl;
+				target.classList.add("selected");
+				$imageButtons[lastSelectedIndex].classList.remove("selected");
 			}
+			lastSelectedIndex = index;
 		});
 	});
 </script>

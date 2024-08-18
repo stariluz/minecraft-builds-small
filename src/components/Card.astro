@@ -1,4 +1,6 @@
 ---
+import PaypalButton from './buttons/PaypalButton.astro';
+
 interface Props {
 	building: Building,
 }
@@ -34,9 +36,7 @@ const priceWithDiscount = (building.price * (1 - building.discount / 100)).toFix
 					<span class="tag">Lobby</span>
 					<span class="tag">Road</span>
 				</div>
-				<a class="card-action btn-paypal" href="">
-					Pay with PayPal
-				</a>
+				<PaypalButton class='d-block'/>
 			</div>
 		</div>
 	</div>
@@ -139,20 +139,6 @@ const priceWithDiscount = (building.price * (1 - building.discount / 100)).toFix
 		font-weight: 600;
 		opacity: 0.7;
 	}
-	.card-action{
-		border-radius: 4px;
-		display: block;
-		padding: 0.6rem 1rem;
-		font-weight: 600;
-	}
-	a.card-action{
-		text-decoration: none;
-	}
-	.btn-paypal{
-		color: rgb(0, 0, 0);
-		background-color: rgb(250, 170, 11);
-	}
-
 	.link-card:is(:hover, :focus-within) {
 		background-position: 0;
 		background-image: var(--accent-gradient);
