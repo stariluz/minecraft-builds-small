@@ -1,0 +1,77 @@
+---
+
+---
+
+<div class="tabs">
+  <div class="tab-menu">
+    <slot name="tab-menu" />
+  </div>
+
+  <div class="tabs-content">
+    <slot name="tab-content" />
+  </div>
+</div>
+
+<style>
+  .tabs {
+    font-family: Arial, sans-serif;
+  }
+
+  .tab-menu {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+    width: fit-content;
+  }
+
+  .tab-content {
+    padding: 20px;
+  }
+</style>
+
+<script>
+  document.querySelectorAll(".tab-link").forEach((button) => {
+      button.addEventListener("click", () => {
+          const tabId = button.getAttribute("data-tab");
+          if (tabId == null) {
+              console.warn(`data-tab not defined`);
+              return;
+          }
+          document
+              .querySelectorAll(".tab-link")
+              .forEach((btn) => btn.classList.remove("active"));
+          document
+              .querySelectorAll(".tab")
+              .forEach((tab) => tab.classList.remove("active"));
+          button.classList.add("active");
+          (document.getElementById(tabId) as HTMLElement).classList.add(
+              "active",
+          );
+
+      });
+  });
+
+  // document.addEventListener("DOMContentLoaded", () => {
+  //   const tabs = document.querySelectorAll(".tabs-menu button");
+  //   const contents = document.querySelectorAll(".tabs-content>*");
+
+  //   tabs.forEach((tab) => {
+  //     tab.addEventListener("click", () => {
+  //       // Remove active class from all tabs
+  //       tabs.forEach((t) => t.classList.remove("active"));
+  //       // Hide all contents
+  //       contents.forEach((content) => (content.style.display = "none"));
+
+  //       // Set the clicked tab as active
+  //       tab.classList.add("active");
+  //       // Show the corresponding content
+  //       const targetId = tab.getAttribute("data-target");
+  //       document.querySelector(`#${targetId}`).style.display = "block";
+  //     });
+  //   });
+
+  //   // Initialize the first tab as active
+  //   if (tabs.length > 0) {
+  //     tabs[0].click();
+  //   }
+  // });
+</script>

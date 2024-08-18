@@ -1,0 +1,27 @@
+---
+interface Props {
+    tabId: string;
+    class?: string;
+}
+const { tabId, class: className } = Astro.props;
+---
+
+<button class:list={["tab-link", className]} data-tab={tabId}>
+    <slot />
+</button>
+
+<style>
+    .tab-link {
+        padding: 10px 20px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        outline: none;
+        transition: color 0.3s ease;
+    }
+
+    .tab-link.active {
+        border-bottom: 2px solid black;
+        font-weight: bold;
+    }
+</style>

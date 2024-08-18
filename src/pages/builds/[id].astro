@@ -4,6 +4,10 @@ import builds from "../../data/builds.json";
 import ImageButton from "../../components/buttons/ImageButton.astro";
 import Rating from "../../components/Rating.astro";
 import PaypalButton from "../../components/buttons/PaypalButton.astro";
+import Tab from "../../components/Tab.astro";
+import Tabs from "../../components/Tabs.astro";
+import TabLink from "../../components/TabLink.astro";
+import IconDiscord from "../../components/icons/IconDiscord.astro";
 
 export function getStaticPaths() {
 	return builds.map((building) => ({
@@ -76,12 +80,12 @@ const building = builds.find((building) => {
 			</div>
 		</section>
 		<section class="pay">
-			<PaypalButton class="d-block centered"/>
+			<PaypalButton class="d-block centered" />
 			<div>
 				<h4>Things you get</h4>
 				<ul>
 					<li>Support once verified</li>
-					<li>Free access to updates </li>
+					<li>Free access to updates</li>
 					<li>Exclusive channels on Discord</li>
 					<li>Giveaways on Discord</li>
 					<li>Java & Bedrock support</li>
@@ -89,7 +93,76 @@ const building = builds.find((building) => {
 				</ul>
 			</div>
 		</section>
-		<section></section>
+
+		<section class="extra">
+			<Tabs>
+				<Fragment slot="tab-menu">
+					<TabLink class="active" tabId={"tab1"}>
+						Download Files
+					</TabLink>
+					<TabLink tabId={"tab2"}> 3D Model </TabLink>
+					<TabLink tabId={"tab3"}> Support </TabLink>
+				</Fragment>
+
+				<Fragment slot="tab-content">
+					<Tab class="active" id="tab1">
+						<p>The files that can be brought are the following:</p>
+						<h5>Java Schematic:</h5>
+						<ul>
+							{
+								building.downloadData.javaSchematic.map(
+									(file) => <li>{file}</li>,
+								)
+							}
+						</ul>
+						<h5>Java World:</h5>
+						<ul>
+							{
+								building.downloadData.javaWorld.map((file) => (
+									<li>{file}</li>
+								))
+							}
+						</ul>
+						<h5>Minecraft Bedrock:</h5>
+						<ul>
+							{
+								building.downloadData.minecraftBedrock.map(
+									(file) => <li>{file}</li>,
+								)
+							}
+						</ul>
+					</Tab>
+					<Tab id="tab2">
+						<p>
+							<a class="btn" href={building.threeDModel}
+								>Check here the 3D model.</a
+							>
+						</p>
+					</Tab>
+					<Tab id="tab3">
+						<p>
+							Need help? We are here to help you and answer any
+							questions.
+						</p>
+						<a
+							class="icon-link"
+							href="http://"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<IconDiscord />
+							<span class="icon icon-tablerti ti-brand-discord"
+							></span>
+							Discord
+						</a>
+						<!-- <a href="http://" target="_blank" rel="noopener noreferrer">Contact page</a> -->
+						<!-- <a href="http://" target="_blank" rel="noopener noreferrer">Wiki</a> -->
+					</Tab>
+				</Fragment>
+			</Tabs>
+		</section>
+
+		<section class="reviews"></section>
 	</main>
 </Layout>
 <style>
@@ -101,7 +174,8 @@ const building = builds.find((building) => {
 		grid-template-areas:
 			"ga ga ga"
 			"co co pa"
-			"ex ex .";
+			"ex ex pa";
+		row-gap: 2rem;
 	}
 	.gallery {
 		grid-area: ga;
@@ -112,8 +186,12 @@ const building = builds.find((building) => {
 	.pay {
 		grid-area: pa;
 	}
+	.extra {
+		grid-area: ex;
+	}
 	.banner {
-		width: 100%;
+		margin: auto;
+		width: 80%;
 		aspect-ratio: 16/9;
 		overflow: hidden;
 	}
@@ -147,6 +225,21 @@ const building = builds.find((building) => {
 	.content-header {
 		margin-bottom: 2rem;
 	}
+
+	h5 {
+		font-size: 1rem;
+		margin: 0;
+	}
+	.icon-link {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+	a {
+		text-decoration: none;
+		font-weight: 600;
+		color: var(--stari-text-color-link);
+	}
 </style>
 <script>
 	const banner = document.getElementById("banner") as HTMLImageElement;
@@ -169,6 +262,25 @@ const building = builds.find((building) => {
 				$imageButtons[lastSelectedIndex].classList.remove("selected");
 			}
 			lastSelectedIndex = index;
+		});
+	});
+
+	document.querySelectorAll(".tab-link").forEach((button) => {
+		button.addEventListener("click", (event) => {
+			const target = event.currentTarget as HTMLButtonElement;
+			const tabContent = document.querySelector(
+				`#${target.dataset.tab}`,
+			) as HTMLElement;
+
+			document
+				.querySelectorAll(".tab-link")
+				.forEach((btn) => btn.classList.remove("active"));
+			document
+				.querySelectorAll(".tab")
+				.forEach((tab) => tab.classList.remove("active"));
+
+			target.classList.add("active");
+			tabContent.classList.add("active");
 		});
 	});
 </script>

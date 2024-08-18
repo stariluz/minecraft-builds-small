@@ -1,0 +1,21 @@
+---
+interface Props {
+  id: string;
+  class?: string;
+}
+const { id, class: className } = Astro.props;
+---
+
+<div class:list={["tab", className]} id={id}>
+  <slot />
+</div>
+
+<style>
+  .tab {
+    display: none;
+  }
+
+  .tab.active {
+    display: block;
+  }
+</style>
