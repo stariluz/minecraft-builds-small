@@ -1,10 +1,12 @@
 ---
+import Header from "../components/Header.astro";
 
 interface Props {
 	title: string;
+	class?: string;
 }
 
-const { title } = Astro.props;
+const { class: className, title } = Astro.props;
 ---
 
 <!doctype html>
@@ -17,22 +19,17 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="colors concepts entities">
+	<body class="colors measures concepts entities">
+		<header class:list={["container", className]}>
+			<Header />
+		</header>
 		<slot />
 	</body>
 </html>
 <style is:global>
-	/* :root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	} */
+	.measures * {
+		--stari-container-max-width: 1200px;
+	}
 	.colors * {
 		--stari-color-1-rgb: 36, 107, 73;
 		--stari-color-1: rgb(var(--stari-color-1-rgb));
@@ -41,6 +38,7 @@ const { title } = Astro.props;
 		--stari-color-4: rgb(195, 195, 195);
 		--stari-color-5: rgb(255, 49, 49);
 		--stari-color-6: rgb(16, 103, 196);
+		--stari-shadow-1: rgba(84, 84, 84, 0.162);
 		--stari-text-color-1: var(--stari-color-3);
 		--stari-text-color-2: var(--stari-color-2);
 		--stari-text-color-3: var(--stari-color-1);
@@ -76,14 +74,22 @@ const { title } = Astro.props;
 		--stari-text-color-important: var(--stari-text-color-3);
 		--stari-text-color-minor: var(--stari-text-color-4);
 		--stari-text-color-link: var(--stari-text-color-5);
+		--stari-shadow-color-primary: var(--stari-shadow-1);
 	}
 	.entities * {
+		--stari-header-bg-color: var(--stari-bg-color-primary);
+		--stari-header-text-color: var(--stari-text-color-primary);
+		--stari-header-shadow-color: var(--stari-shadow-color-primary);
 		--stari-btn-color-primary: var(--stari-bg-color-important);
 		--stari-btn-color-secondary: var(--stari-bg-color-secondary);
 	}
+
 	html {
 		font-family: system-ui, sans-serif;
 		/* background: #13151a; */
+	}
+	* {
+		box-sizing: border-box;
 	}
 
 	h1 {
@@ -104,6 +110,19 @@ const { title } = Astro.props;
 			monospace;
 	}
 
+	.container {
+		margin: auto;
+		width: calc(100% - 2rem);
+		max-width: var(--stari-container-max-width);
+		padding: 1rem;
+		color: var(--stari-text-color-primary);
+		font-size: 16px;
+		line-height: 1.6;
+	}
+	header.container{
+		padding-top: 0;
+		padding-bottom: 0;
+	}
 	.text-gradient {
 		background-image: var(--stari-accent-gradient-1);
 		-webkit-background-clip: text;

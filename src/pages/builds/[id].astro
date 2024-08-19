@@ -4,9 +4,9 @@ import builds from "../../data/builds.json";
 import ImageButton from "../../components/buttons/ImageButton.astro";
 import Rating from "../../components/Rating.astro";
 import PaypalButton from "../../components/buttons/PaypalButton.astro";
-import Tab from "../../components/Tab.astro";
-import Tabs from "../../components/Tabs.astro";
-import TabLink from "../../components/TabLink.astro";
+import Tab from "../../components/tabs/Tab.astro";
+import Tabs from "../../components/tabs/Tabs.astro";
+import TabLink from "../../components/tabs/TabLink.astro";
 import IconDiscord from "../../components/icons/IconDiscord.astro";
 
 export function getStaticPaths() {
@@ -29,147 +29,153 @@ const building = builds.find((building) => {
 ---
 
 <Layout title={building.title}>
-	<main class="container">
-		<section class="gallery">
-			<div class="banner">
-				<img
-					class="banner-image"
-					id="banner"
-					src={building.images[0]}
-					alt="Banner"
-				/>
-			</div>
-			<footer>
-				<ul class="gallery-images">
-					{
-						building.images.map((imageUrl, index) => (
-							<li class="gallery-image">
-								<ImageButton
-									imageUrl={imageUrl}
-									index={index}
-								/>
-							</li>
-						))
-					}
-				</ul>
-			</footer>
-		</section>
-		<section class="content">
-			<header class="content-header">
-				<h1>{building.title}</h1>
-				<Rating value={building.rating} />
-			</header>
-			<div>
-				<p>{building.content.description}</p>
-				<p>
-					Size: <strong
-						>{building.content.dimensions.length}x{
-							building.content.dimensions.width
-						}x{building.content.dimensions.height}</strong
-					>
-				</p>
-				<p>Interiors: <strong>{building.content.interiors}</strong></p>
-				<p>Versions: <strong>{building.content.versions}</strong></p>
-				<ul>
-					{
-						building.content.characteristics.map(
-							(characteristic) => <li>{characteristic}</li>,
-						)
-					}
-				</ul>
-			</div>
-		</section>
-		<section class="pay">
-			<PaypalButton class="d-block centered" />
-			<div>
-				<h4>Things you get</h4>
-				<ul>
-					<li>Support once verified</li>
-					<li>Free access to updates</li>
-					<li>Exclusive channels on Discord</li>
-					<li>Giveaways on Discord</li>
-					<li>Java & Bedrock support</li>
-					<li>A great build made by us</li>
-				</ul>
-			</div>
-		</section>
-
-		<section class="extra">
-			<Tabs>
-				<Fragment slot="tab-menu">
-					<TabLink class="active" tabId={"tab1"}>
-						Download Files
-					</TabLink>
-					<TabLink tabId={"tab2"}> 3D Model </TabLink>
-					<TabLink tabId={"tab3"}> Support </TabLink>
-				</Fragment>
-
-				<Fragment slot="tab-content">
-					<Tab class="active" id="tab1">
-						<p>The files that can be brought are the following:</p>
-						<h5>Java Schematic:</h5>
-						<ul>
-							{
-								building.downloadData.javaSchematic.map(
-									(file) => <li>{file}</li>,
-								)
-							}
-						</ul>
-						<h5>Java World:</h5>
-						<ul>
-							{
-								building.downloadData.javaWorld.map((file) => (
-									<li>{file}</li>
-								))
-							}
-						</ul>
-						<h5>Minecraft Bedrock:</h5>
-						<ul>
-							{
-								building.downloadData.minecraftBedrock.map(
-									(file) => <li>{file}</li>,
-								)
-							}
-						</ul>
-					</Tab>
-					<Tab id="tab2">
-						<p>
-							<a class="btn" href={building.threeDModel}
-								>Check here the 3D model.</a
-							>
-						</p>
-					</Tab>
-					<Tab id="tab3">
-						<p>
-							Need help? We are here to help you and answer any
-							questions.
-						</p>
-						<a
-							class="icon-link"
-							href="http://"
-							target="_blank"
-							rel="noopener noreferrer"
+	<main class:list={["container"]}>
+		<main class="detail">
+			<section class="gallery">
+				<div class="banner">
+					<img
+						class="banner-image"
+						id="banner"
+						src={building.images[0]}
+						alt="Banner"
+					/>
+				</div>
+				<footer>
+					<ul class="gallery-images">
+						{
+							building.images.map((imageUrl, index) => (
+								<li class="gallery-image">
+									<ImageButton
+										imageUrl={imageUrl}
+										index={index}
+									/>
+								</li>
+							))
+						}
+					</ul>
+				</footer>
+			</section>
+			<section class="content">
+				<header class="content-header">
+					<h1>{building.title}</h1>
+					<Rating value={building.rating} />
+				</header>
+				<div>
+					<p>{building.content.description}</p>
+					<p>
+						Size: <strong
+							>{building.content.dimensions.length}x{
+								building.content.dimensions.width
+							}x{building.content.dimensions.height}</strong
 						>
-							<IconDiscord />
-							<span class="icon icon-tablerti ti-brand-discord"
-							></span>
-							Discord
-						</a>
-						<!-- <a href="http://" target="_blank" rel="noopener noreferrer">Contact page</a> -->
-						<!-- <a href="http://" target="_blank" rel="noopener noreferrer">Wiki</a> -->
-					</Tab>
-				</Fragment>
-			</Tabs>
-		</section>
+					</p>
+					<p>
+						Interiors: <strong>{building.content.interiors}</strong>
+					</p>
+					<p>
+						Versions: <strong>{building.content.versions}</strong>
+					</p>
+					<ul>
+						{
+							building.content.characteristics.map(
+								(characteristic) => <li>{characteristic}</li>,
+							)
+						}
+					</ul>
+				</div>
+			</section>
+			<section class="pay">
+				<PaypalButton class="d-block centered" />
+				<div>
+					<h4>Things you get</h4>
+					<ul>
+						<li>Support once verified</li>
+						<li>Free access to updates</li>
+						<li>Exclusive channels on Discord</li>
+						<li>Giveaways on Discord</li>
+						<li>Java & Bedrock support</li>
+						<li>A great build made by us</li>
+					</ul>
+				</div>
+			</section>
 
-		<section class="reviews"></section>
+			<section class="extra">
+				<Tabs>
+					<Fragment slot="tab-menu">
+						<TabLink class="active" tabId={"tab1"}>
+							Download Files
+						</TabLink>
+						<TabLink tabId={"tab2"}> 3D Model </TabLink>
+						<TabLink tabId={"tab3"}> Support </TabLink>
+					</Fragment>
+
+					<Fragment slot="tab-content">
+						<Tab class="active" id="tab1">
+							<p>
+								The files that can be brought are the following:
+							</p>
+							<h5>Java Schematic:</h5>
+							<ul>
+								{
+									building.downloadData.javaSchematic.map(
+										(file) => <li>{file}</li>,
+									)
+								}
+							</ul>
+							<h5>Java World:</h5>
+							<ul>
+								{
+									building.downloadData.javaWorld.map(
+										(file) => <li>{file}</li>,
+									)
+								}
+							</ul>
+							<h5>Minecraft Bedrock:</h5>
+							<ul>
+								{
+									building.downloadData.minecraftBedrock.map(
+										(file) => <li>{file}</li>,
+									)
+								}
+							</ul>
+						</Tab>
+						<Tab id="tab2">
+							<p>
+								<a class="btn" href={building.threeDModel}>
+									Check here the 3D model.
+								</a>
+							</p>
+						</Tab>
+						<Tab id="tab3">
+							<p>
+								Need help? We are here to help you and answer
+								any questions.
+							</p>
+							<a
+								class="icon-link"
+								href="http://"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<IconDiscord />
+								<span
+									class="icon icon-tablerti ti-brand-discord"
+								></span>
+								Discord
+							</a>
+							<!-- <a href="http://" target="_blank" rel="noopener noreferrer">Contact page</a> -->
+							<!-- <a href="http://" target="_blank" rel="noopener noreferrer">Wiki</a> -->
+						</Tab>
+					</Fragment>
+				</Tabs>
+			</section>
+
+			<section class="reviews"></section>
+		</main>
 	</main>
 </Layout>
 <style>
-	.container {
-		margin: auto;
-		width: calc(100% - 2rem);
-		max-width: 960px;
+	.detail {
 		display: grid;
 		grid-template-areas:
 			"ga ga ga"
