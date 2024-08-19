@@ -28,4 +28,5 @@ interface Building {
     downloadData: DownloadData;
     threeDModel: string; // URL to 3D model
     images: string[]; // Array of image URLs
+    categories: string[]; // Array of categories
 }

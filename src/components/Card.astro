@@ -1,18 +1,25 @@
 ---
-import PaypalButton from './buttons/PaypalButton.astro';
+import PaypalButton from "./buttons/PaypalButton.astro";
 
 interface Props {
-	building: Building,
+	building: Building;
 }
 
 const { building } = Astro.props;
-const priceWithDiscount = (building.price * (1 - building.discount / 100)).toFixed(2);
+const priceWithDiscount = (
+	building.price *
+	(1 - building.discount / 100)
+).toFixed(2);
 ---
 
 <li class="card link-card">
 	<div class="card-inner">
 		<div class="card-background">
-			<img class="card-image" src={building.images[0]} alt="Product image" />
+			<img
+				class="card-image"
+				src={building.images[0]}
+				alt="Product image"
+			/>
 		</div>
 		<div class="card-overlay">
 			<div class="card-header">
@@ -23,20 +30,20 @@ const priceWithDiscount = (building.price * (1 - building.discount / 100)).toFix
 					${priceWithDiscount}
 				</span>
 			</div>
-			<a  href={`builds/${building.id}`} class="card-interaction">
-	
-			</a>
+			<a href={`builds/${building.id}`} class="card-interaction"> </a>
 			<div class="card-content">
 				<span class="discount">{building.discount}% OFF</span>
 				<h2 class="card-title">
 					{building.title}
 				</h2>
 				<div class="card-tags">
-					<span class="tag">Assets</span>
-					<span class="tag">Lobby</span>
-					<span class="tag">Road</span>
+					{
+						building.categories.map((category) => (
+							<a href={`?category=${category}`} class="tag">{category}</a>
+						))
+					}
 				</div>
-				<PaypalButton class='d-block'/>
+				<PaypalButton class="d-block" />
 			</div>
 		</div>
 	</div>
@@ -57,7 +64,7 @@ const priceWithDiscount = (building.price * (1 - building.discount / 100)).toFix
 		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 	}
-	.card-inner{
+	.card-inner {
 		width: 100%;
 	}
 	.card-overlay {
@@ -71,7 +78,7 @@ const priceWithDiscount = (building.price * (1 - building.discount / 100)).toFix
 		color: var(--stari-text-color-secondary);
 		position: relative;
 	}
-	.card-background{
+	.card-background {
 		max-width: 100%;
 		max-height: 100%;
 		width: 100%;
@@ -91,13 +98,13 @@ const priceWithDiscount = (building.price * (1 - building.discount / 100)).toFix
 		padding: var(--stari-card-padding);
 	}
 	.card-content {
-		padding:  var(--stari-card-padding) calc(var(--stari-card-padding)  - 1px);
+		padding: var(--stari-card-padding) calc(var(--stari-card-padding) - 1px);
 		/* display: flex;
 		justify-content: space-between;
 		align-items: center;
 		position: relative; */
 	}
-	.card-interaction{
+	.card-interaction {
 		flex: 1;
 	}
 	.card-title {
@@ -110,12 +117,12 @@ const priceWithDiscount = (building.price * (1 - building.discount / 100)).toFix
 		font-weight: 900;
 		/* color: var(--stari-text-color-important); */
 	}
-	.price--discounted{
+	.price--discounted {
 		text-decoration: line-through;
 		color: var(--stari-text-color-minor);
 	}
 
-	.discount{
+	.discount {
 		background-color: var(--stari-bg-color-highlight);
 		padding: 0.25rem;
 		border-radius: 2px;
@@ -124,16 +131,18 @@ const priceWithDiscount = (building.price * (1 - building.discount / 100)).toFix
 		margin-bottom: 0.5rem;
 		display: inline-block;
 	}
-	.card-tags{
+	.card-tags {
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: flex-start;
 		gap: 0.25rem;
 		margin-bottom: 0.5rem;
 	}
-	.tag{
+	.tag {
+		text-decoration: none;
 		background-color: var(--stari-bg-color-dark);
 		color: var(--stari-text-color-minor);
-		padding: 0.2rem 0.6rem 	;
+		padding: 0.2rem 0.6rem;
 		border-radius: 2px;
 		font-size: 0.75rem;
 		font-weight: 600;

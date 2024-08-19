@@ -2,6 +2,15 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import builds from "../data/builds.json";
+
+export const prerender = false;
+
+const url = new URL(Astro.request.url);
+const params = new URLSearchParams(url.search);
+const category = params.get("category");
+const filteredBuilds = category
+	? builds.filter((building) => building.categories.includes(category))
+	: builds;
 ---
 
 <Layout title="Welcome to Astro.">
@@ -12,7 +21,11 @@ import builds from "../data/builds.json";
 	</p> -->
 	<main class:list={["container"]}>
 		<ul role="list" class="link-card-grid">
-			{builds.map((building) => <Card building={building as Building} />)}
+			{
+				filteredBuilds.map((building) => (
+					<Card building={building as Building} />
+				))
+			}
 		</ul>
 	</main>
 </Layout>
@@ -52,3 +65,8 @@ import builds from "../data/builds.json";
 		margin: 0;
 	}
 </style>
+
+<script>
+	const urlSearchParams = new URLSearchParams(window.location.search);
+	const params = Object.fromEntries(urlSearchParams.entries());
+</script>

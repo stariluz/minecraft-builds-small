@@ -4,7 +4,7 @@
         "title": "🏠 Modern House",
         "price": 10.99,
         "discount": 20,
-        "rating": 4.5,
+        "rating": 4.8,
         "content": {
             "description": "A sleek modern house with large windows and open spaces. 🌿🏡",
             "dimensions": {
@@ -21,15 +21,30 @@
             ]
         },
         "downloadData": {
-            "javaSchematic": ["1.12", "1.13", "1.14"],
-            "javaWorld": ["1.15", "1.16", "1.17"],
-            "minecraftBedrock": [".mcworld file"]
+            "javaSchematic": [
+                "1.12",
+                "1.13",
+                "1.14"
+            ],
+            "javaWorld": [
+                "1.15",
+                "1.16",
+                "1.17"
+            ],
+            "minecraftBedrock": [
+                ".mcworld file"
+            ]
         },
         "threeDModel": "link_to_3d_model_1",
         "images": [
             "/img/Photo_01.png",
-            "/img/logo.png",
+            "/img/Photo_01.png",
             "/img/Photo_01.png"
+        ],
+        "categories": [
+            "Modern",
+            "Residential",
+            "Luxury"
         ]
     },
     {
@@ -54,15 +69,30 @@
             ]
         },
         "downloadData": {
-            "javaSchematic": ["1.12", "1.13", "1.14"],
-            "javaWorld": ["1.15", "1.16", "1.17"],
-            "minecraftBedrock": [".mcworld file"]
+            "javaSchematic": [
+                "1.12",
+                "1.13",
+                "1.14"
+            ],
+            "javaWorld": [
+                "1.15",
+                "1.16",
+                "1.17"
+            ],
+            "minecraftBedrock": [
+                ".mcworld file"
+            ]
         },
         "threeDModel": "link_to_3d_model_2",
         "images": [
             "/img/Photo_01.png",
             "/img/Photo_01.png",
             "/img/Photo_01.png"
+        ],
+        "categories": [
+            "Medieval",
+            "Historical",
+            "Defensive"
         ]
     },
     {
@@ -87,15 +117,30 @@
             ]
         },
         "downloadData": {
-            "javaSchematic": ["1.14", "1.15", "1.16"],
-            "javaWorld": ["1.17", "1.18", "1.19"],
-            "minecraftBedrock": [".mcworld file"]
+            "javaSchematic": [
+                "1.14",
+                "1.15",
+                "1.16"
+            ],
+            "javaWorld": [
+                "1.17",
+                "1.18",
+                "1.19"
+            ],
+            "minecraftBedrock": [
+                ".mcworld file"
+            ]
         },
         "threeDModel": "link_to_3d_model_3",
         "images": [
             "/img/Photo_01.png",
             "/img/Photo_01.png",
             "/img/Photo_01.png"
+        ],
+        "categories": [
+            "Futuristic",
+            "Urban",
+            "Advanced"
         ]
     },
     {
@@ -120,15 +165,30 @@
             ]
         },
         "downloadData": {
-            "javaSchematic": ["1.10", "1.11", "1.12"],
-            "javaWorld": ["1.13", "1.14", "1.15"],
-            "minecraftBedrock": [".mcworld file"]
+            "javaSchematic": [
+                "1.10",
+                "1.11",
+                "1.12"
+            ],
+            "javaWorld": [
+                "1.13",
+                "1.14",
+                "1.15"
+            ],
+            "minecraftBedrock": [
+                ".mcworld file"
+            ]
         },
         "threeDModel": "link_to_3d_model_4",
         "images": [
             "/img/Photo_01.png",
             "/img/Photo_01.png",
             "/img/Photo_01.png"
+        ],
+        "categories": [
+            "Desert",
+            "Village",
+            "Traditional"
         ]
     },
     {
@@ -153,15 +213,30 @@
             ]
         },
         "downloadData": {
-            "javaSchematic": ["1.11", "1.12", "1.13"],
-            "javaWorld": ["1.14", "1.15", "1.16"],
-            "minecraftBedrock": [".mcworld file"]
+            "javaSchematic": [
+                "1.11",
+                "1.12",
+                "1.13"
+            ],
+            "javaWorld": [
+                "1.14",
+                "1.15",
+                "1.16"
+            ],
+            "minecraftBedrock": [
+                ".mcworld file"
+            ]
         },
         "threeDModel": "link_to_3d_model_5",
         "images": [
             "/img/Photo_01.png",
             "/img/Photo_01.png",
             "/img/Photo_01.png"
+        ],
+        "categories": [
+            "Suburban",
+            "Residential",
+            "Community"
         ]
     },
     {
@@ -186,15 +261,30 @@
             ]
         },
         "downloadData": {
-            "javaSchematic": ["1.15", "1.16", "1.17"],
-            "javaWorld": ["1.18", "1.19", "1.20"],
-            "minecraftBedrock": [".mcworld file"]
+            "javaSchematic": [
+                "1.15",
+                "1.16",
+                "1.17"
+            ],
+            "javaWorld": [
+                "1.18",
+                "1.19",
+                "1.20"
+            ],
+            "minecraftBedrock": [
+                ".mcworld file"
+            ]
         },
         "threeDModel": "link_to_3d_model_6",
         "images": [
             "/img/Photo_01.png",
             "/img/Photo_01.png",
             "/img/Photo_01.png"
+        ],
+        "categories": [
+            "Space",
+            "Futuristic",
+            "Scientific"
         ]
     },
     {
@@ -217,9 +307,12 @@
         "downloadData": {
             "javaSchematic": [],
             "javaWorld": [],
-            "minecraftBedrock": [".mcworld file"]
+            "minecraftBedrock": [
+                ".mcworld file"
+            ]
         },
         "threeDModel": "",
-        "images": []
-    }    
+        "images": [],
+        "categories": []
+    }
 ]
