@@ -1,10 +1,12 @@
 <div class="header" id="header">
     <nav class="header-content">
-        <a href="?category=Assets">Assets</a>
-        <a href="?category=Lobby">Lobby</a>
-        <img class="logo" src="/img/logo.png" alt="" srcset="" />
-        <a href="?category=Road">Road</a>
-        <a href="?category=Castle">Castle</a>
+        <a href="?category=Assets#builds">Assets</a>
+        <a href="?category=Lobby#builds">Lobby</a>
+        <a href="/">
+            <img class="logo" src="/img/logo.png" alt="logo" srcset="" />
+        </a>
+        <a href="?category=Road#builds">Road</a>
+        <a href="?category=Castle#builds">Castle</a>
     </nav>
 </div>
 
@@ -16,7 +18,7 @@
         height: 6.5rem;
         margin: auto;
         padding: 1rem 2rem;
-        width: calc(100% - 2rem -   3rem);
+        width: calc(100% - 2rem - 3rem);
         max-width: calc(var(--stari-container-max-width) - 2rem);
         z-index: 1000;
         transition: transform 0.3s ease-in-out;
@@ -35,9 +37,13 @@
         gap: 2rem;
         height: 100%;
         padding: 0.5rem 2rem;
-        box-shadow: 0px 4px 15px 2px var(--stari-header-shadow-color)
+        box-shadow: 0px 4px 15px 2px var(--stari-header-shadow-color);
     }
-    .header-content a{
+    .header-content a {
+        height: 100%;
+        max-height: 100%;
+        display: flex;
+        align-items: center;
         text-decoration: none;
         color: var(--stari-header-text-color);
         font-weight: 600;
@@ -47,6 +53,7 @@
     .hidden {
         transform: translateY(-8rem);
     }
+
     .logo {
         height: 100%;
         width: auto;

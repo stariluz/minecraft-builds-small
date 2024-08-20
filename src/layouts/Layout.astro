@@ -31,7 +31,7 @@ const { class: className, title } = Astro.props;
 		--stari-container-max-width: 1200px;
 	}
 	.colors * {
-		--stari-color-1-rgb: 36, 107, 73;
+		--stari-color-1-rgb: 255, 194, 0;
 		--stari-color-1: rgb(var(--stari-color-1-rgb));
 		--stari-color-2: rgb(255, 255, 255);
 		--stari-color-3: rgb(31, 29, 29);
@@ -49,8 +49,8 @@ const { class: className, title } = Astro.props;
 		--stari-bg-color-3: var(--stari-color-3);
 		--stari-bg-color-4: var(--stari-color-5);
 		--stari-accent-1: var(--stari-color-1-rgb);
-		--stari-accent-light-1: 57, 218, 140;
-		--stari-accent-dark-1: 13, 56, 35;
+		--stari-accent-light-1: 255, 235, 132;
+		--stari-accent-dark-1: 206, 157, 0;
 		--stari-accent-gradient-1: linear-gradient(
 			45deg,
 			rgb(var(--stari-accent-1)),
@@ -58,9 +58,10 @@ const { class: className, title } = Astro.props;
 			white 60%
 		);
 		--stari-accent-gradient-2: linear-gradient(
-			30deg,
-			rgba(var(--stari-accent-1), 66%),
-			rgba(var(--stari-accent-light-1), 33%)
+			45deg,
+			rgb(var(--stari-accent-dark-1)) 0%,
+			rgb(var(--stari-accent-1)) 40%,
+			rgb(var(--stari-accent-light-1)) 100%
 		);
 	}
 	.concepts * {
@@ -81,12 +82,16 @@ const { class: className, title } = Astro.props;
 		--stari-header-text-color: var(--stari-text-color-primary);
 		--stari-header-shadow-color: var(--stari-shadow-color-primary);
 		--stari-btn-color-primary: var(--stari-bg-color-important);
-		--stari-btn-color-secondary: var(--stari-bg-color-secondary);
+		--stari-btn-color-secondary: var(--stari-bg-color-primary);
+		--stari-btn-outline-color-secondary: var(--stari-bg-color-secondary);
 	}
 
 	html {
 		font-family: system-ui, sans-serif;
 		/* background: #13151a; */
+	}
+	body {
+		margin: 0;
 	}
 	* {
 		box-sizing: border-box;
@@ -119,9 +124,25 @@ const { class: className, title } = Astro.props;
 		font-size: 16px;
 		line-height: 1.6;
 	}
-	header.container{
+	header.container {
 		padding-top: 0;
 		padding-bottom: 0;
+	}
+	a.btn {
+		text-decoration: none;
+		color: var(--stari-btn-color-secondary);
+	}
+	.btn {
+		font-weight: 600;
+		color: var(--stari-btn-color-secondary);
+		background: var(--stari-accent-gradient-2);
+		padding: 0.5rem 1rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.5rem;
+		width: fit-content;
+		border-radius: 4px;
 	}
 	.text-gradient {
 		background-image: var(--stari-accent-gradient-1);
