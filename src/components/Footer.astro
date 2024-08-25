@@ -1,0 +1,176 @@
+---
+import IconDiscord from "./icons/IconDiscord.astro";
+import IconX from "./icons/IconX.astro";
+---
+
+<footer class="footer" id="footer">
+    <div class="container">
+        <nav class="footer-content">
+            <section class="link-x">
+                <a class="link" href="">
+                    <div class="link-icon">
+                        <IconX />
+                    </div>
+                    <div class="link-content">
+                        <strong class="link-title">Follow us</strong>
+                        <span>@ONEBUILDBT</span>
+                    </div>
+                </a>
+            </section>
+            <section class="link-discord">
+                <a class="link" href="">
+                    <div class="link-icon">
+                        <IconDiscord />
+                    </div>
+                    <div class="link-content">
+                        <strong class="link-title">Join to us</strong>
+                    </div>
+                    <!-- <strong></strong> -->
+                </a>
+                <div class="icon-box"></div>
+            </section>
+            <main class="brand">
+                <a href="." class="logotype">
+                    <span class="logo-line-1">
+                        <img src="img/logo.png" alt="Logo" />
+                        <span>ONE</span>
+                    </span>
+                    <span>BUILD</span>
+                </a>
+
+                <div class="slogan">
+                    <span class="text-gradient">Good</span> products at a <span
+                        class="text-gradient">good</span
+                    > price
+                </div>
+            </main>
+        </nav>
+    </div>
+</footer>
+
+<style>
+    .footer {
+        margin-top: 4rem;
+        width: 100%;
+        transition: all 0.3s ease-in-out;
+        background-color: var(--stari-footer-bg-color);
+        border-top: 1.15rem solid var(--stari-footer-border-color);
+        /* Si se quiere agregar algun patron al fondo aqui se puede hacer
+            background-image: url('img/patron.png');
+        */
+    }
+    .footer-content {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 2fr 2fr 1fr;
+        grid-template-areas: ". ex discord main";
+        color: var(--stari-text-color-secondary);
+    }
+    .footer-content > * {
+        height: 100%;
+    }
+    .footer-content a {
+        text-decoration: none;
+    }
+    .link {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        text-decoration: none;
+        font-size: 1.25rem;
+        line-height: 1;
+        font-weight: 400;
+        color: var(--stari-footer-text-color);
+    }
+    .link-x {
+        grid-area: ex;
+    }
+    .link-discord {
+        grid-area: discord;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        font-size: 1.25rem;
+        line-height: 1;
+        font-weight: 400;
+        color: var(--stari-footer-text-color);
+    }
+    .link-icon {
+        width: 3rem;
+        height: 3rem;
+        background-color: var(--stari-bg-color-btn);
+        box-shadow: 0 0 2rem -1rem var(--stari-bg-color-btn);
+        border-radius: 0.5rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+    .link-content {
+        display: flex;
+        flex-direction: column;
+    }
+    .link-title {
+        font-weight: 700;
+    }
+
+    .brand {
+        grid-area: main;
+        text-align: end;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-start;
+    }
+    .logotype {
+        max-width: 11rem;
+        font-size: 3rem;
+        line-height: 1;
+        font-weight: 700;
+        padding: 0.5rem 0.75rem;
+        color: var(--stari-text-color-important);
+        background-color: var(--stari-bg-color-important);
+        box-shadow: 10px 0px 10px 0px var(--stari-bg-shadow-color-important);
+        border-radius: 8px;
+        flex-wrap: wrap;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .logo-line-1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        display: flex;
+    }
+    .logotype > span {
+        /* vertical-align: bottom; */
+    }
+    .logotype img {
+        height: 3rem;
+        width: 3rem;
+        transform: scale(1.15) translateY(5.5%);
+        aspect-ratio: 1;
+    }
+
+    .slogan {
+        line-height: 1;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        font-weight: 400;
+        font-size: 1.5rem;
+        color: var(--stari-text-color-secondary);
+    }
+</style>
+<style is:global>
+    .link-icon>*{
+        filter: drop-shadow(0 0 1rem rgba(255, 255, 255, 0.8));
+        width: 60%;
+        height: 60%;
+    }
+</style>

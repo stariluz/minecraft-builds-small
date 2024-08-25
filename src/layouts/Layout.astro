@@ -1,4 +1,5 @@
 ---
+import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 
 interface Props {
@@ -20,11 +21,12 @@ const { class: className, title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body class="colors measures concepts entities">
-		<header class:list={["container", className]}>
+		<section class:list={["container", className]}>
 			<Header />
-		</header>
+		</section>
 		<slot />
 	</body>
+	<Footer/>
 </html>
 <style is:global>
 	.measures * {
@@ -34,10 +36,12 @@ const { class: className, title } = Astro.props;
 		--stari-color-1-rgb: 255, 194, 0;
 		--stari-color-1: rgb(var(--stari-color-1-rgb));
 		--stari-color-2: rgb(255, 255, 255);
-		--stari-color-3: rgb(31, 29, 29);
+		--stari-color-3: rgb(25, 24, 24);
 		--stari-color-4: rgb(195, 195, 195);
 		--stari-color-5: rgb(255, 49, 49);
 		--stari-color-6: rgb(16, 103, 196);
+		--stari-color-7: rgb(29, 27, 40);
+		--stari-color-8: rgb(225, 155, 14);
 		--stari-shadow-1: rgba(84, 84, 84, 0.162);
 		--stari-text-color-1: var(--stari-color-3);
 		--stari-text-color-2: var(--stari-color-2);
@@ -48,6 +52,7 @@ const { class: className, title } = Astro.props;
 		--stari-bg-color-2: var(--stari-color-1);
 		--stari-bg-color-3: var(--stari-color-3);
 		--stari-bg-color-4: var(--stari-color-5);
+		--stari-bg-color-5: var(--stari-color-7);
 		--stari-accent-1: var(--stari-color-1-rgb);
 		--stari-accent-light-1: 255, 235, 132;
 		--stari-accent-dark-1: 206, 157, 0;
@@ -70,6 +75,7 @@ const { class: className, title } = Astro.props;
 		--stari-bg-color-secondary: var(--stari-bg-color-2);
 		--stari-bg-color-important: var(--stari-bg-color-3);
 		--stari-bg-color-highlight: var(--stari-bg-color-4);
+		--stari-bg-color-btn: rgb(255, 181, 34);z
 		--stari-text-color-primary: var(--stari-text-color-1);
 		--stari-text-color-secondary: var(--stari-text-color-2);
 		--stari-text-color-important: var(--stari-text-color-3);
@@ -78,9 +84,14 @@ const { class: className, title } = Astro.props;
 		--stari-shadow-color-primary: var(--stari-shadow-1);
 	}
 	.entities * {
+		--stari-footer-bg-color: var(--stari-bg-color-5);
+		--stari-footer-text-color: var(--stari-text-color-secondary);
+		--stari-footer-border-color: var(--stari-bg-color-secondary);
+
 		--stari-header-bg-color: var(--stari-bg-color-primary);
 		--stari-header-text-color: var(--stari-text-color-primary);
 		--stari-header-shadow-color: var(--stari-shadow-color-primary);
+
 		--stari-btn-color-primary: var(--stari-bg-color-important);
 		--stari-btn-color-secondary: var(--stari-bg-color-primary);
 		--stari-btn-outline-color-secondary: var(--stari-bg-color-secondary);
@@ -124,7 +135,7 @@ const { class: className, title } = Astro.props;
 		font-size: 16px;
 		line-height: 1.6;
 	}
-	header.container {
+	section.container {
 		padding-top: 0;
 		padding-bottom: 0;
 	}

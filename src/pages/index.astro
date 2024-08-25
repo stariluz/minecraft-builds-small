@@ -18,7 +18,7 @@ const filteredBuilds = category
 ---
 
 <Layout title="Welcome to Astro.">
-	<header class="banner">
+	<main class="banner">
 		<div class="banner-overlay"></div>
 		<main class="container banner-content">
 			<div class="logotype">
@@ -38,8 +38,8 @@ const filteredBuilds = category
 				</a>
 			</div>
 		</main>
-	</header>
-	<main id="builds" class:list={["container"]}>
+	</main>
+	<section id="builds" class:list={["container"]}>
 		<ul role="list" class="link-card-grid">
 			{
 				filteredBuilds.map((building) => (
@@ -47,7 +47,7 @@ const filteredBuilds = category
 				))
 			}
 		</ul>
-	</main>
+	</section>
 </Layout>
 
 <style>
@@ -130,25 +130,6 @@ const filteredBuilds = category
 		font-size: 3rem;
 		text-align: center;
 		color: var(--stari-text-color-secondary);
-	}
-	.instructions {
-		margin-bottom: 2rem;
-		/* border: 1px solid rgba(var(--accent-light), 25%); */
-		color: var(--stari-text-color-secondary);
-		background: var(--stari-accent-gradient-2);
-		padding: 1.5rem;
-		border-radius: 8px;
-	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
 	}
 	.link-card-grid {
 		display: grid;
