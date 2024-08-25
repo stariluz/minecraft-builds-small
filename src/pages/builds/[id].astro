@@ -8,6 +8,7 @@ import Tab from "../../components/tabs/Tab.astro";
 import Tabs from "../../components/tabs/Tabs.astro";
 import TabLink from "../../components/tabs/TabLink.astro";
 import IconDiscord from "../../components/icons/IconDiscord.astro";
+import Header from "../../components/Header.astro";
 
 export function getStaticPaths() {
 	return builds.map((building) => ({
@@ -30,6 +31,7 @@ const building = builds.find((building) => {
 
 <Layout title={building.title}>
 	<main class:list={["container"]}>
+		<Header class="space"/>
 		<main class="detail">
 			<section class="gallery">
 				<div class="banner">

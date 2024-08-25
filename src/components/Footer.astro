@@ -75,6 +75,7 @@ import IconX from "./icons/IconX.astro";
     .link {
         height: 100%;
         display: flex;
+        justify-content: center;
         align-items: center;
         gap: 0.5rem;
 
@@ -84,18 +85,23 @@ import IconX from "./icons/IconX.astro";
         font-weight: 400;
         color: var(--stari-footer-text-color);
     }
+    @media (max-width: 692px) {
+        .footer-content {
+            grid-template-columns: 2fr 1fr;
+            grid-template-areas:
+                "ex main"
+                "discord main";
+        }
+        .link {
+            justify-content: start;
+        }
+    }
+
     .link-x {
         grid-area: ex;
     }
     .link-discord {
         grid-area: discord;
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        font-size: 1.25rem;
-        line-height: 1;
-        font-weight: 400;
-        color: var(--stari-footer-text-color);
     }
     .link-icon {
         width: 3rem;
@@ -107,7 +113,6 @@ import IconX from "./icons/IconX.astro";
         display: flex;
         align-items: center;
         justify-content: center;
-
     }
     .link-content {
         display: flex;
@@ -166,9 +171,28 @@ import IconX from "./icons/IconX.astro";
         font-size: 1.5rem;
         color: var(--stari-text-color-secondary);
     }
+    
+    @media (max-width: 460px) {
+        .footer-content {
+            grid-template-columns: 1fr;
+            grid-template-areas:
+                "main"
+                "ex"
+                "discord";
+            row-gap: 2rem;
+        }
+        .link {
+            justify-content: center;
+        }
+
+        .brand {
+            align-items: center;
+            text-align: center;
+        }
+    }
 </style>
 <style is:global>
-    .link-icon>*{
+    .link-icon > * {
         filter: drop-shadow(0 0 1rem rgba(255, 255, 255, 0.8));
         width: 60%;
         height: 60%;

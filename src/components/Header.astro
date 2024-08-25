@@ -1,4 +1,11 @@
-<header class="header" id="header">
+---
+interface Props {
+    class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<header class:list={["header",className]} id="header">
     <nav class="header-content">
         <a href="?category=Assets#builds">Assets</a>
         <a href="?category=Lobby#builds">Lobby</a>
@@ -11,8 +18,14 @@
 </header>
 
 <style>
-    .header {
+    .space{
+        position: relative;
+        opacity: 0;
+    }
+    .fixed{
         position: fixed;
+    }
+    .header {
         /* top: 0;
         left: 0; */
         height: 6.5rem;
