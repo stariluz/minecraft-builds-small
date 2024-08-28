@@ -31,7 +31,7 @@ const building = builds.find((building) => {
 
 <Layout title={building.title}>
 	<main class:list={["container"]}>
-		<Header class="space"/>
+		<Header class="space" />
 		<main class="detail">
 			<section class="gallery">
 				<div class="banner">
@@ -247,6 +247,18 @@ const building = builds.find((building) => {
 		text-decoration: none;
 		font-weight: 600;
 		color: var(--stari-text-color-link);
+	}
+	@media (max-width: 812px) {
+		.detail {
+			grid-template-areas:
+				"ga ga"
+				"co co"
+				"pa pa"
+				"ex ex";
+		}
+		.banner {
+			width: 100%;
+		}
 	}
 </style>
 <script>
