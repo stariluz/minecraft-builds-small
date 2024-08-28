@@ -7,7 +7,8 @@ interface Props {
 const { class:className, href } = Astro.props;
 ---
 
-<a class:list={["btn-paypal", className]} href={href}> PayPal checkout </a>
+<div class="paypal-button-container"></div>
+<!-- <a class:list={["btn-paypal", className]} href={href}> PayPal checkout </a> -->
 
 <style>
 	.btn-paypal{
@@ -28,3 +29,6 @@ const { class:className, href } = Astro.props;
         text-align: center;
     }
 </style>
+
+<script src="https://www.paypal.com/sdk/js?client-id=test&components=buttons&disable-funding=card,credit,bancontact" data-sdk-integration-source="integrationbuilder_sc"></script>
+<script src="./paypal.js"></script>
